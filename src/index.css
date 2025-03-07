@@ -1,0 +1,150 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 346.8 77.2% 49.8%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased p-0 m-0;
+  }
+  #root {
+    @apply w-full max-w-none p-0 m-0;
+  }
+}
+
+.promo-banner {
+  @apply bg-gradient-to-r from-red-600 via-red-500 to-red-600 
+         text-white py-3 px-4 shadow-lg animate-pulse;
+}
+
+.timer-box {
+  @apply bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-xl
+         border-2 border-primary/30 flex items-center gap-3;
+}
+
+.cta-button {
+  @apply relative overflow-hidden bg-[#ea384c] text-white px-8 py-4 rounded-full font-semibold text-lg 
+         transform transition-all duration-300 hover:scale-105 hover:shadow-lg
+         before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full
+         before:bg-white/20 before:transform before:skew-x-12 before:-translate-x-full
+         hover:before:translate-x-full before:transition-transform before:duration-700;
+}
+
+.highlight-box {
+  @apply relative overflow-hidden bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg
+         border border-primary/20;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Esconder controles específicos do vídeo */
+video::-webkit-media-controls-overflow-button,
+video::-webkit-media-controls-settings-button,
+video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+
+/* Estilo específico para ocultar o menu de três pontos */
+video::-internal-media-controls-overflow-menu-list {
+  display: none !important;
+}
+
+/* Estilos personalizados para o Linktree */
+.linktree-card {
+  @apply bg-white rounded-lg shadow-sm hover:shadow-md transition-all 
+         flex items-center justify-between p-4 w-full border border-gray-100;
+}
+
+.social-icon {
+  @apply text-white hover:scale-110 transition-transform;
+}
+
+.social-icons-container {
+  @apply mt-6 p-4 bg-white/20 backdrop-blur-sm rounded-full 
+         flex justify-center gap-6 flex-wrap;
+}
